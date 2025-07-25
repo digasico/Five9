@@ -1,7 +1,6 @@
 1. I believe the "populate_tables.sql" answers this question since the calculations are
    inside an insert/update trigger for the agent_event table. Therefore, inserting rows 
-   into agent_state is basically insert/update rows into agent_state.<br>
-<br>
+   into agent_state is basically insert/update rows into agent_state.
 2. Well, I'm not sure that I fully grasp the goal behind this question; therefore, it is hard
    for me to say for sure what's wrong, but I would guess that:
   
@@ -20,6 +19,5 @@
       should also help improve the performance since agent_state_interval is a rollup table.
 
     - Not sure if I would have the column "agent" in table agent_event, as far as I can 
-      tell it is dependent on agent, so it should be on the agent table.<br>
-<br>
+      tell it is dependent on agent, so it should be on the agent table.
 3. I guess this is the trigger (create_trigger.sql)
