@@ -70,6 +70,9 @@ function loadTotalTimeSpentInEachState(divId) {
                         columnWidth: '50px',
                     }
                 },
+                legend: {
+                    position: 'top',
+                },
                 dataLabels: {
                     enabled: false
                 },
@@ -78,12 +81,22 @@ function loadTotalTimeSpentInEachState(divId) {
                     categories: agentIds.sort(),
                     labels: {
                         rotate: -45
+                    },
+                    title: {
+                        text: 'Agent IDs',
+                        style: { fontSize: '15px', color: '#555' }
                     }
                 },
                 yaxis: {
                     title: {
-                        text: 'Total Time Spent (seconds)'
-                    }
+                        text: 'Total Time Spent (Hours)',
+                    },
+                    labels: {
+                        formatter: function(val) { return Math.floor(val / 3600) + ' hours'; },
+                        style: { fontSize: '13px', colors: '#555' },
+                    },
+                    stepSize: 18000, // 5 hours in seconds
+                    forceNiceScale: true,
                 },
                 fill: {
                     opacity: 1

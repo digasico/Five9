@@ -16,7 +16,7 @@ Each graph adds its unique perspective to the data, allowing for a comprehensive
 
         This line chart tracks the percentage of time agents spend in productive states (ON_CALL, ACW, ON_HOLD) versus total time. It reveals peak and low utilization periods, helping managers optimize scheduling, address underperformance, and ensure efficient resource use. This supports improved call handling capacity and customer service by aligning staffing with demand.
 
-    ![alt text](image.png)
+    ![Visualization Screenshot](final.png)
 
 2. The storage procedure that retrieves the data for the visualization is on 1B/Backend/sp_GetAgentStateIntervals.sql
 3. The code that handles the visualization is in 1B/Frontend
