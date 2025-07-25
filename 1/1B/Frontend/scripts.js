@@ -57,43 +57,17 @@ function loadTotalTimeSpentInEachState(divId) {
                 chart: {
                     type: "bar",
                     stacked: true,
-                    height: 400,
-                    background: '#f9f9f9',
-                    toolbar: { show: false },
-                    animations: {
-                        enabled: true,
-                        easing: 'easeinout',
-                        speed: 800,
-                        animateGradually: { enabled: true, delay: 150 },
-                        dynamicAnimation: { enabled: true, speed: 350 }
-                    },
-                    parentHeightOffset: 0
+                    height: 400
                 },
                 colors: states.map(get_colors),
                 title: {
-                    text: "Total Time Spent in Each State",
-                    align: 'center',
-                    style: { fontSize: '20px', fontWeight: 'bold', color: '#333' }
-                },
-                legend: {
-                    show: true,
-                    position: 'top',
-                    horizontalAlign: 'center',
-                    fontSize: '14px',
-                    markers: { radius: 12 }
-                },
-                grid: {
-                    borderColor: '#e0e0e0',
-                    strokeDashArray: 4,
-                    padding: { left: 20, right: 20 }
+                        text: "Total Time Spent in Each State",
+                        align: 'center',
                 },
                 plotOptions: {
                     bar: {
                         horizontal: false,
-                        columnWidth: '40%',
-                        endingShape: 'rounded',
-                        borderRadius: 6,
-                        dataLabels: { position: 'top' }
+                        columnWidth: '50px',
                     }
                 },
                 dataLabels: {
@@ -103,47 +77,24 @@ function loadTotalTimeSpentInEachState(divId) {
                 xaxis: {
                     categories: agentIds.sort(),
                     labels: {
-                        rotate: -45,
-                        style: { fontSize: '13px', colors: '#555' }
-                    },
-                    axisBorder: { show: false },
-                    axisTicks: { show: false },
-                    title: {
-                        text: 'Agent IDs',
-                        style: { fontSize: '15px', color: '#555' }
+                        rotate: -45
                     }
                 },
                 yaxis: {
                     title: {
-                        text: 'Total Time Spent (Hours)',
-                        style: { fontSize: '15px', color: '#555' }
-                    },
-                    labels: {
-                        formatter: function(val) { return Math.floor(val / 3600) + ' hours'; },
-                        style: { fontSize: '13px', colors: '#555' },
-                    },
-                    stepSize: 18000, // 5 hours in seconds
-                    forceNiceScale: true,
+                        text: 'Total Time Spent (seconds)'
+                    }
                 },
                 fill: {
-                    opacity: 0.85
+                    opacity: 1
                 },
                 tooltip: {
-                    theme: 'light',
                     y: {
                         formatter: function (val) {
                             return `${(val / 3600).toFixed(2)} hours`;
                         }
                     }
                 },
-                responsive: [{
-                    breakpoint: 600,
-                    options: {
-                        chart: { height: 300 },
-                        legend: { position: 'bottom', fontSize: '12px' },
-                        xaxis: { labels: { rotate: 0 } }
-                    }
-                }]
             });
             chart.render();
         })
@@ -177,49 +128,11 @@ async function loadAgentStateDistribution(divId) {
             const options = {
                 chart: {
                     type: 'pie',
-                    height: '100%',
-                    dropShadow: {
-                        enabled: true,
-                        top: 2,
-                        left: 2,
-                        blur: 4,
-                        color: '#888',
-                        opacity: 0.2
-                    },
-                    background: '#f9f9f9'
+                    height: 350,
                 },
                 colors: states.map(get_colors),
                 series: series,
                 labels: states,
-                legend: {
-                    position: 'right',
-                    fontSize: '16px',
-                    fontWeight: 500,
-                    markers: {
-                        width: 16,
-                        height: 16,
-                        radius: 8
-                    }
-                },
-                dataLabels: {
-                    enabled: true,
-                    formatter: function (val, opts) {
-                        return val.toFixed(1) + "%";
-                    },
-                    style: {
-                        fontSize: '15px',
-                        fontWeight: 'bold',
-                        colors: ['#333']
-                    },
-                    dropShadow: {
-                        enabled: true,
-                        top: 1,
-                        left: 1,
-                        blur: 1,
-                        color: '#000',
-                        opacity: 0.1
-                    }
-                },
                 responsive: [{
                     breakpoint: 480,
                     options: {
@@ -227,21 +140,13 @@ async function loadAgentStateDistribution(divId) {
                             width: 200
                         },
                         legend: {
-                            position: 'bottom',
-                            fontSize: '12px'
+                            position: 'bottom'
                         }
                     }
                 }],
                 title: {
                     text: 'Agent State Distribution',
-                    align: 'center',
-                    style: {
-                        fontSize: '20px',
-                        fontWeight: 'bold',
-                        color: '#222'
-                    },
-                    offsetX: -55,
-                    margin: 50,
+                    align: 'center'
                 },
                 tooltip: {
                     y: {
@@ -252,22 +157,9 @@ async function loadAgentStateDistribution(divId) {
                 },
                 plotOptions: {
                     pie: {
-                        offsetX: 0,
-                        customScale: 1.05,
-                        donut: {
-                            size: '65%',
-                        },
-                        expandOnClick: true,
-                        dataLabels: {
-                            offset: 0
-                        }
-                        
-                    },
-                },
-                stroke: {
-                    show: true,
-                    width: 2,
-                    colors: ['#fff']
+                        offsetX: 60,
+                        customScale: 1
+                    }
                 }
             };
         
@@ -335,8 +227,7 @@ async function loadAgentUtilization(divId, startDate, endDate) {
                     height: 350,
                     zoom: {
                         autoScaleYaxis: true
-                    },
-                    background: '#f9f9f9'
+                    }
                 },
                 series: [{
                     name: 'Agent Utilization (%)',
@@ -406,88 +297,17 @@ Use Case: Reduce excessive hold or park times to improve customer experience.
             const options = {
                 chart: {
                     type: 'donut',
-                    height: '100%',
-                    dropShadow: {
-                        enabled: true,
-                        blur: 4,
-                        color: '#888',
-                        opacity: 0.2
-                    },
-                    background: '#f9f9f9',
-                    animations: {
-                        enabled: true,
-                        easing: 'easeinout',
-                        speed: 900,
-                        animateGradually: { enabled: true, delay: 200 },
-                        dynamicAnimation: { enabled: true, speed: 400 }
-                    }
+                    height : 350
                 },
                 colors: states.map(get_colors),
                 series: series,
                 labels: states,
                 legend: {
-                    position: 'bottom',
-                    fontSize: '16px',
-                    fontWeight: 500,
-                    markers: {
-                        width: 16,
-                        height: 16,
-                        radius: 8
-                    },
-                    itemMargin: {
-                        horizontal: 12,
-                        vertical: 8
-                    }
-                },
-                dataLabels: {
-                    enabled: true,
-                    formatter: function (val, opts) {
-                        return val.toFixed(1) + "%";
-                    },
-                    style: {
-                        fontSize: '12px',
-                        fontWeight: 'bold',
-                        colors: ['#333']
-                    },
-                    dropShadow: {
-                        enabled: true,
-                        top: 1,
-                        left: 1,
-                        blur: 1,
-                        color: '#000',
-                        opacity: 0.1
-                    }
+                    position: 'bottom'
                 },
                 title: {
                     text: 'Call Hold and Park Time Analysis',
-                    align: 'center',
-                    style: {
-                        fontSize: '22px',
-                        fontWeight: 'bold',
-                        color: '#222'
-                    },
-                    offsetY: 10,
-                    margin: 30,
-                },
-                tooltip: {
-                    y: {
-                        formatter: function (val) {
-                            return `${(val / 3600).toFixed(2)} hours`;
-                        }
-                    }
-                },
-                plotOptions: {
-                    pie: {
-                        donut: {
-                            size: '65%',
-                        },
-                        expandOnClick: true,
-                    }
-                },
-                stroke: {
-                    show: true,
-                    width: 2,
-                    colors: ['#fff']
+                    align: 'center'
                 },
                 responsive: [{
                     breakpoint: 480,
@@ -496,8 +316,7 @@ Use Case: Reduce excessive hold or park times to improve customer experience.
                             width: 200
                         },
                         legend: {
-                            position: 'bottom',
-                            fontSize: '12px'
+                            position: 'bottom'
                         }
                     }
                 }]
