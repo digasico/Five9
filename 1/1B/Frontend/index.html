@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>ApexCharts SQL Server Demo</title>
+        <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+        <script src="scripts.js"></script>
+        <style>
+            .date-picker-form {
+                margin: 20px;
+                text-align: center;
+            }
+            .date-picker-form label {
+                margin-right: 10px;
+            }
+            .date-picker-form input[type="date"] {
+                padding: 5px;
+                margin-right: 10px;
+            }
+            .date-picker-form button {
+                padding: 5px 15px;
+                background-color: #36A2EB;
+                color: white;
+                border: none;
+                border-radius: 5px;
+                cursor: pointer;
+            }
+            .date-picker-form button:hover {
+                background-color: #2a8bc3;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="TotalTimeSpentInEachStateChart"></div>
+        <hr style="height: 10px; background-color: #000000; border: none;">
+
+        <div style="display: flex; justify-content: center; align-items: stretch; height: 400px;">
+            <div id="AgentStateDistribution" style="width: 49%;"></div>
+            <div style="background-color: black; width: 10px; height: 100%;"></div>
+            <div id="CallEfficiency" style="width: 49%;"></div>
+        </div>
+        <hr style="height: 10px; background-color: #000000; border: none;">
+
+        <div class="date-picker-form">
+            <label for="startDate">Start Date:</label>
+            <input type="date" id="startDate" value="2025-07-16">
+            <label for="endDate">End Date:</label>
+            <input type="date" id="endDate" value="2025-07-22">
+            <button onclick="loadAgentUtilization('#AgentUtilization', document.getElementById('startDate').value, document.getElementById('endDate').value)">Update Chart</button>
+        </div>
+        <div id="AgentUtilization"></div>
+        <script>
+
+            // Load chart when the page loads
+            window.onload = function() {
+                loadTotalTimeSpentInEachState("#TotalTimeSpentInEachStateChart");
+                loadAgentStateDistribution("#AgentStateDistribution");
+                loadAgentUtilization('#AgentUtilization', document.getElementById('startDate').value, document.getElementById('endDate').value);
+                loadCallEfficiency("#CallEfficiency");
+
+            };
+        </script>
+    </body>
+</html>

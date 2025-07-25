@@ -1,0 +1,3 @@
+I understand that I was only required to do either 1A or 1B, but after completing 1A and not being sure if the results were what you were looking for, I decided to also complete 1B since I believe I had a better understanding of what was being asked. I hope this is acceptable.
+
+**If you only going to review one of the two, I would prefer you to review 1B as I believe it is more aligned with your expectations.**

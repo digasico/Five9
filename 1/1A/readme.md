@@ -1,0 +1,1 @@
+I am not sure regarding what the question is asking so i went through 2 approaches, one is in 1A_v1 which given an interval of time it will return the rollup table for the data in that interval and the other in 1A_v2 which is a trigger that once a new row is inserted in the agent_event table it will update the agent_state_interval table accordingly.

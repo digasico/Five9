@@ -1,0 +1,13 @@
+Assumptions:
+    - Every time an agent changes states a new event is created.
+    - An Agent can only relate to a single state at any given time
+    - An Agent can only relate to single domain at any given time
+    
+    
+Observations:
+    - Question 1A asks to "process data available in the agent_event table to build a rollup table by agent, by state, in 15-
+      minute increments", which I interpert as having a rollup for agent_id,state,agent_state_time but the agent_state_interval
+      also has column domain_id which in my opinion makes sense to belong to the rollup, so i developed a midle term, create 
+      a column that will allow to filter by rollup level with all 4 columns where last level is domain_id, that way i can keep 
+      the table columns without losing logic and to obtain the wanted result, that is rollup(agent_id,state,agent_state_time) 
+      just use a where to filter out the last level which is the domain.
